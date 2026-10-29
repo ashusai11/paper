@@ -1,0 +1,33 @@
+# Supplier Qualification Pipeline — dependencies
+# Install: pip install -r requirements.txt --break-system-packages
+
+# ── Core ──────────────────────────────────────────────────────────
+pypdfium2>=4.0.0          # Agent 1 — PDF parsing
+python-docx>=1.1.0        # Agent 1 — DOCX parsing
+rapidocr-onnxruntime>=1.3 # Agent 1 — OCR fallback
+firecrawl-anydoc>=0.2.0   # Agent 1 — document → markdown (docx, pptx, odt, rtf, epub, xls, csv, pdf)
+openpyxl>=3.1.0           # Agent 2 — Excel (.xlsx/.xlsm) reading for the tabular lane
+
+# ── Agent 2 ───────────────────────────────────────────────────────
+chromadb>=0.5.0           # vectorstore
+FlagEmbedding>=1.2.0      # BGE-M3 embeddings (downloads ~2.2GB model on first run)
+rank-bm25>=0.2.2          # hybrid search BM25 component
+sentence-transformers>=2.7 # embedding dependency
+
+# ── Agent 3 / Orchestration ───────────────────────────────────────
+langgraph>=0.2.0          # graph orchestration + interrupt/resume
+langgraph-checkpoint-sqlite>=2.0.0  # durable pauses that survive API restarts
+langchain-core>=0.2.0     # @tool decorator
+pydantic>=2.0.0           # response models throughout
+
+# ── API ───────────────────────────────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9   # file upload support
+
+# ── UI ────────────────────────────────────────────────────────────
+streamlit>=1.35.0
+httpx>=0.27.0             # API client in Streamlit pages
+
+# ── Monitoring (optional) ─────────────────────────────────────────
+langfuse>=2.0.0           # tracing — remove if not using

@@ -1,0 +1,1164 @@
+{
+  "version": 1,
+  "decimal_separator": "auto",
+  "dayfirst": true,
+  "fallback_target": "tabular_records",
+  "targets": {
+    "purchase_history": {
+      "kind": "purchase_history",
+      "table": "purchase_history",
+      "priority": 10,
+      "label": "Purchase history (orders / deliveries)",
+      "description": "Order-level records: purchase date, order reference, product, quantity, amount, currency, delivery status, quality issue.",
+      "natural_key": [
+        "purchase_reference"
+      ],
+      "match_fields": [
+        "purchase_reference",
+        "purchase_date"
+      ],
+      "on_existing": "update",
+      "row_supplier_field": "supplier_name",
+      "fields": {
+        "purchase_date": {
+          "type": "date",
+          "required": true,
+          "aliases": [
+            "purchase date",
+            "order date",
+            "date",
+            "datum",
+            "bestelldatum",
+            "lieferdatum",
+            "delivery date",
+            "belegdatum",
+            "rechnungsdatum",
+            "order date",
+            "date of delivery",
+            "bestaetigungsdatum",
+            "order deadline",
+            "deadline",
+            "due date",
+            "expected delivery date",
+            "requested date",
+            "liefertermin",
+            "termin",
+            "auftragsdatum"
+          ]
+        },
+        "purchase_reference": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "purchase reference",
+            "order number",
+            "order no",
+            "reference",
+            "po number",
+            "po",
+            "bestellnummer",
+            "bestell nr",
+            "belegnummer",
+            "vorgangsnummer",
+            "ref",
+            "purchase order number",
+            "bestellung",
+            "order reference",
+            "order ref",
+            "po reference",
+            "purchase order",
+            "order id",
+            "beleg"
+          ]
+        },
+        "product_or_service": {
+          "type": "text",
+          "aliases": [
+            "product",
+            "product or service",
+            "article",
+            "material",
+            "artikel",
+            "produkt",
+            "ware",
+            "bezeichnung",
+            "description",
+            "item",
+            "bezeichnung der ware",
+            "service"
+          ]
+        },
+        "quantity": {
+          "type": "number",
+          "aliases": [
+            "quantity",
+            "qty",
+            "menge",
+            "anzahl",
+            "stueck",
+            "stück",
+            "stk",
+            "menge in stueck"
+          ]
+        },
+        "amount": {
+          "type": "number",
+          "aliases": [
+            "amount",
+            "value",
+            "total",
+            "price",
+            "summe",
+            "gesamtbetrag",
+            "betrag",
+            "preis",
+            "rechnungsbetrag",
+            "warenwert",
+            "order value",
+            "total amount",
+            "gross amount",
+            "bruttobetrag",
+            "gesamtpreis",
+            "amount total",
+            "total price",
+            "brutto"
+          ]
+        },
+        "currency": {
+          "type": "text",
+          "aliases": [
+            "currency",
+            "waehrung",
+            "währung",
+            "ccy",
+            "waehrung eur",
+            "currency code"
+          ]
+        },
+        "delivery_status": {
+          "type": "enum",
+          "aliases": [
+            "delivery status",
+            "status",
+            "lieferstatus",
+            "lieferstatus des auftrags",
+            "delivery",
+            "fulfillment",
+            "zahlungsstatus",
+            "state"
+          ]
+        },
+        "quality_issue": {
+          "type": "bool",
+          "aliases": [
+            "quality issue",
+            "quality problems",
+            "nonconformance",
+            "qualitaetsproblem",
+            "qualitätsproblem",
+            "beanstandung",
+            "qm issue",
+            "reklamation",
+            "ncr",
+            "quality complaint",
+            "abweichung"
+          ]
+        },
+        "notes": {
+          "type": "text",
+          "aliases": [
+            "notes",
+            "note",
+            "comment",
+            "bemerkung",
+            "kommentar",
+            "anmerkung",
+            "bemerkungen",
+            "abweichungsbeschreibung"
+          ]
+        },
+        "supplier_name": {
+          "type": "text",
+          "table_column": false,
+          "aliases": [
+            "vendor",
+            "supplier",
+            "supplier name",
+            "vendor name",
+            "lieferant",
+            "lieferantenname",
+            "lieferant name",
+            "partner",
+            "lieferanten",
+            "kunde",
+            "vendor company"
+          ]
+        },
+        "net_amount": {
+          "type": "number",
+          "table_column": false,
+          "aliases": [
+            "untaxed amount",
+            "net amount",
+            "subtotal",
+            "netto",
+            "nettobetrag",
+            "value excl vat",
+            "amount untaxed",
+            "amount before vat"
+          ]
+        },
+        "buyer": {
+          "type": "text",
+          "table_column": false,
+          "aliases": [
+            "buyer",
+            "einkaeufer",
+            "einkäufer",
+            "requester",
+            "requested by",
+            "kaeufer",
+            "käufer"
+          ]
+        },
+        "company": {
+          "type": "text",
+          "table_column": false,
+          "aliases": [
+            "company",
+            "unternehmen",
+            "gesellschaft",
+            "our company",
+            "besteeller",
+            "besteellendes unternehmen"
+          ]
+        },
+        "priority": {
+          "type": "text",
+          "table_column": false,
+          "aliases": [
+            "priority",
+            "prio",
+            "prioritaet",
+            "priorität"
+          ]
+        },
+        "billing_status": {
+          "type": "enum",
+          "table_column": false,
+          "aliases": [
+            "billing status",
+            "invoice status",
+            "rechnungsstatus",
+            "billing state",
+            "rechnungsstatus der bestellung"
+          ]
+        },
+        "order_status": {
+          "type": "enum",
+          "table_column": false,
+          "aliases": [
+            "order status",
+            "po status",
+            "auftragsstatus",
+            "status of the order",
+            "purchase order status"
+          ]
+        }
+      },
+      "enum_values": {
+        "delivery_status": {
+          "delivered": "delivered",
+          "complete": "delivered",
+          "komplett": "delivered",
+          "erfuellt": "delivered",
+          "erfüllt": "delivered",
+          "shipped": "shipped",
+          "versandt": "shipped",
+          "dispatched": "shipped",
+          "in transit": "in_transit",
+          "unterwegs": "in_transit",
+          "open": "open",
+          "offen": "open",
+          "pending": "open",
+          "late": "late",
+          "delayed": "late",
+          "verspaetet": "late",
+          "verspätet": "late",
+          "returned": "returned",
+          "retour": "returned",
+          "ruecksendung": "returned",
+          "disputed": "disputed",
+          "reklamiert": "disputed",
+          "cancelled": "cancelled",
+          "canceled": "cancelled",
+          "storno": "cancelled",
+          "rejected": "rejected",
+          "draft": "draft",
+          "purchase": "ordered",
+          "waiting for dept approval": "pending_approval",
+          "sent": "ordered",
+          "confirmed": "ordered",
+          "to approve": "pending_approval",
+          "done": "delivered"
+        },
+        "order_status": {
+          "draft": "draft",
+          "purchase": "ordered",
+          "sent": "ordered",
+          "confirmed": "ordered",
+          "cancelled": "cancelled",
+          "rejected": "rejected"
+        },
+        "billing_status": {
+          "fully billed": "fully_billed",
+          "billed": "fully_billed",
+          "nothing to bill": "not_billed",
+          "not billed": "not_billed",
+          "waiting bills": "waiting_for_bill",
+          "waiting for bills": "waiting_for_bill",
+          "to bill": "to_bill"
+        }
+      }
+    },
+    "supplier_master": {
+      "kind": "supplier_profile",
+      "table": "company_profile",
+      "priority": 10,
+      "label": "Supplier master data (single supplier -> company_profile)",
+      "description": "One row per supplier: legal name, country, address, website, supplier type, notes. Use for a file that describes the supplier you are currently qualifying. Files that list MANY suppliers are routed to `supplier_directory` automatically.",
+      "natural_key": [
+        "legal_name"
+      ],
+      "on_existing": "update",
+      "fields": {
+        "legal_name": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "legal name",
+            "supplier name",
+            "name",
+            "firma",
+            "firmenname",
+            "lieferant",
+            "lieferant name",
+            "lieferantennname",
+            "company",
+            "unternehmen",
+            "legal entity",
+            "supplier"
+          ]
+        },
+        "country": {
+          "type": "text",
+          "aliases": [
+            "country",
+            "land",
+            "country code",
+            "staatsangehoerigkeit",
+            "staat",
+            "country of origin"
+          ]
+        },
+        "address": {
+          "type": "text",
+          "aliases": [
+            "address",
+            "adresse",
+            "strasse",
+            "straße",
+            "street",
+            "anschrift",
+            "strasse und hausnummer"
+          ]
+        },
+        "website": {
+          "type": "text",
+          "aliases": [
+            "website",
+            "url",
+            "webseite",
+            "homepage",
+            "www"
+          ]
+        },
+        "supplier_type": {
+          "type": "text",
+          "aliases": [
+            "supplier type",
+            "type",
+            "lieferantentyp",
+            "typ",
+            "category",
+            "kategorie"
+          ]
+        },
+        "notes": {
+          "type": "text",
+          "aliases": [
+            "notes",
+            "note",
+            "comment",
+            "bemerkung",
+            "remark"
+          ]
+        }
+      }
+    },
+    "supplier_directory": {
+      "kind": "supplier_directory",
+      "table": "supplier_directory",
+      "priority": 5,
+      "label": "Supplier directory (many suppliers -> one table)",
+      "description": "Master lists that contain many suppliers. One row per supplier with full provenance, kept apart from `company_profile` so a list can never overwrite the profile of the supplier under review.",
+      "natural_key": [
+        "legal_name"
+      ],
+      "on_existing": "update",
+      "fields": {
+        "legal_name": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "legal name",
+            "supplier name",
+            "name",
+            "firma",
+            "firmenname",
+            "lieferant",
+            "lieferant name",
+            "lieferantennname",
+            "company",
+            "unternehmen",
+            "legal entity",
+            "supplier"
+          ]
+        },
+        "country": {
+          "type": "text",
+          "aliases": [
+            "country",
+            "land",
+            "country code",
+            "staatsangehoerigkeit",
+            "staat",
+            "country of origin"
+          ]
+        },
+        "address": {
+          "type": "text",
+          "aliases": [
+            "address",
+            "adresse",
+            "strasse",
+            "straße",
+            "street",
+            "anschrift",
+            "strasse und hausnummer"
+          ]
+        },
+        "website": {
+          "type": "text",
+          "aliases": [
+            "website",
+            "url",
+            "webseite",
+            "homepage",
+            "www"
+          ]
+        },
+        "supplier_type": {
+          "type": "text",
+          "aliases": [
+            "supplier type",
+            "type",
+            "lieferantentyp",
+            "typ",
+            "category",
+            "kategorie"
+          ]
+        },
+        "notes": {
+          "type": "text",
+          "aliases": [
+            "notes",
+            "note",
+            "comment",
+            "bemerkung",
+            "remark"
+          ]
+        }
+      }
+    },
+    "risk_matrix": {
+      "kind": "generic",
+      "table": "risk_matrix",
+      "priority": 8,
+      "label": "Risk matrix / FMEA (per risk analysis)",
+      "description": "Process or product risks with severity, occurrence and detection. RPN and the risk level are computed in Python (never by an LLM) and the thresholds are configurable here.",
+      "natural_key": [
+        "process_item",
+        "failure_mode"
+      ],
+      "match_fields": [
+        "process_item",
+        "failure_mode"
+      ],
+      "on_existing": "update",
+      "fields": {
+        "process_item": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "process item",
+            "item",
+            "process",
+            "activity",
+            "prozessschritt",
+            "process step",
+            "bauteil",
+            "function",
+            "funktion",
+            "item / process",
+            "process item / function",
+            "application"
+          ]
+        },
+        "failure_mode": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "failure mode",
+            "fehlerart",
+            "failure",
+            "mode of failure",
+            "fehlermodus",
+            "risiko",
+            "risk",
+            "potential failure",
+            "moeglicher fehler",
+            "failure mode / effect"
+          ]
+        },
+        "severity": {
+          "type": "score",
+          "required": true,
+          "min": 1,
+          "max": 10,
+          "sql_type": "INTEGER",
+          "aliases": [
+            "severity",
+            "s",
+            "schweregrad",
+            "severity s",
+            "s (1-10)",
+            "schweregrad s",
+            "auswirkung",
+            "impact",
+            "effect"
+          ]
+        },
+        "occurrence": {
+          "type": "score",
+          "required": true,
+          "min": 1,
+          "max": 10,
+          "sql_type": "INTEGER",
+          "aliases": [
+            "occurrence",
+            "o",
+            "auftretenswahrscheinlichkeit",
+            "occurrence o",
+            "o (1-10)",
+            "eintrittswahrscheinlichkeit",
+            "likelihood"
+          ]
+        },
+        "detection": {
+          "type": "score",
+          "required": true,
+          "min": 1,
+          "max": 10,
+          "sql_type": "INTEGER",
+          "aliases": [
+            "detection",
+            "d",
+            "entdeckungsgrad",
+            "detektionsgrad",
+            "detection d",
+            "erkennbarkeit",
+            "d (1-10)",
+            "detectability"
+          ]
+        },
+        "rpn": {
+          "type": "computed",
+          "compute": "rpn",
+          "sql_type": "INTEGER",
+          "factors": [
+            "severity",
+            "occurrence",
+            "detection"
+          ],
+          "aliases": [
+            "rpn",
+            "risk priority number",
+            "rpn score"
+          ]
+        },
+        "risk_level": {
+          "type": "computed",
+          "compute": "threshold_level",
+          "source": "rpn",
+          "thresholds": [
+            {
+              "max": 39,
+              "value": "low"
+            },
+            {
+              "max": 99,
+              "value": "medium"
+            },
+            {
+              "value": "high"
+            }
+          ],
+          "aliases": [
+            "risk level",
+            "risk classification",
+            "risikostufe",
+            "risikoklasse",
+            "classification"
+          ]
+        },
+        "current_measures": {
+          "type": "text",
+          "aliases": [
+            "current measures",
+            "measures",
+            "action",
+            "risk control",
+            "vorhandene massnahmen",
+            "schutzmassnahmen",
+            "reaktionsplan",
+            "existing measures",
+            "derzeitige massnahmen"
+          ]
+        },
+        "recommended_action": {
+          "type": "text",
+          "aliases": [
+            "recommended action",
+            "recommended measures",
+            "action to take",
+            "empfohlene massnahmen",
+            "korrekturmassnahme",
+            "recommended action / measures",
+            "action recommended"
+          ]
+        },
+        "responsibility": {
+          "type": "text",
+          "aliases": [
+            "responsibility",
+            "responsible",
+            "owner",
+            "verantwortlich",
+            "zustandig",
+            "responsible person"
+          ]
+        },
+        "target_date": {
+          "type": "date",
+          "aliases": [
+            "target date",
+            "due date",
+            "completion date",
+            "zieldatum",
+            "faellig",
+            "termin",
+            "deadline"
+          ]
+        },
+        "status": {
+          "type": "enum",
+          "aliases": [
+            "status",
+            "state",
+            "state of the action",
+            "status der massnahme",
+            "action status"
+          ]
+        }
+      },
+      "enum_values": {
+        "status": {
+          "open": "open",
+          "offen": "open",
+          "in progress": "in_progress",
+          "in bearbeitung": "in_progress",
+          "done": "closed",
+          "closed": "closed",
+          "erledigt": "closed",
+          "implemented": "closed",
+          "umgesetzt": "closed"
+        }
+      }
+    },
+    "nc_register": {
+      "kind": "generic",
+      "table": "nc_register",
+      "priority": 8,
+      "label": "Nonconformity / CAPA register",
+      "description": "Nonconformities and corrective actions — the evidence behind the nonconformity and complaint criteria in VA26.",
+      "natural_key": [
+        "nc_id"
+      ],
+      "match_fields": [
+        "nc_id"
+      ],
+      "on_existing": "update",
+      "fields": {
+        "nc_id": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "nc id",
+            "nc number",
+            "nonconformance id",
+            "abweichungsnummer",
+            "finding id",
+            "number",
+            "nc no",
+            "abweichung id",
+            "capa id"
+          ]
+        },
+        "description": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "description",
+            "beschreibung",
+            "nonconformance",
+            "deviation",
+            "abweichung",
+            "finding",
+            "issue",
+            "feststellung",
+            "text"
+          ]
+        },
+        "raised_date": {
+          "type": "date",
+          "aliases": [
+            "raised date",
+            "date raised",
+            "discovery date",
+            "erstellungsdatum",
+            "datum",
+            "feststellungsdatum",
+            "date of detection"
+          ]
+        },
+        "severity": {
+          "type": "enum",
+          "aliases": [
+            "severity",
+            "classification",
+            "criticality",
+            "schweregrad",
+            "einstufung",
+            "gravitaet"
+          ]
+        },
+        "root_cause": {
+          "type": "text",
+          "aliases": [
+            "root cause",
+            "cause",
+            "ursache",
+            "root cause analysis",
+            "fehlerursache"
+          ]
+        },
+        "corrective_action": {
+          "type": "text",
+          "aliases": [
+            "corrective action",
+            "capa",
+            "action",
+            "korrekturmassnahme",
+            "massnahme",
+            "corrective action / preventive action"
+          ]
+        },
+        "due_date": {
+          "type": "date",
+          "aliases": [
+            "due date",
+            "target date",
+            "faelligkeitsdatum",
+            "termin",
+            "deadline"
+          ]
+        },
+        "status": {
+          "type": "enum",
+          "aliases": [
+            "status",
+            "state",
+            "status der massnahme"
+          ]
+        },
+        "closed_date": {
+          "type": "date",
+          "aliases": [
+            "closed date",
+            "completion date",
+            "abschlussdatum",
+            "date closed"
+          ]
+        }
+      },
+      "enum_values": {
+        "severity": {
+          "major": "major",
+          "critical": "critical",
+          "minor": "minor",
+          "observation": "observation",
+          "feststellung": "observation"
+        },
+        "status": {
+          "open": "open",
+          "offen": "open",
+          "in progress": "in_progress",
+          "in bearbeitung": "in_progress",
+          "closed": "closed",
+          "done": "closed",
+          "erledigt": "closed"
+        }
+      }
+    },
+    "audit_findings": {
+      "kind": "generic",
+      "table": "audit_findings",
+      "priority": 8,
+      "label": "Audit findings (per evaluation)",
+      "description": "Findings from an internal or supplier audit — the evidence for the supplier-audit and complaint criteria in VA26.",
+      "natural_key": [
+        "finding_id"
+      ],
+      "match_fields": [
+        "finding_id"
+      ],
+      "on_existing": "update",
+      "fields": {
+        "finding_id": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "finding id",
+            "finding number",
+            "audit finding",
+            "befund nummer",
+            "befund-id",
+            "id",
+            "finding no",
+            "befund"
+          ]
+        },
+        "source": {
+          "type": "text",
+          "aliases": [
+            "source",
+            "audit",
+            "audit type",
+            "quelle",
+            "audit type",
+            "herkunft"
+          ]
+        },
+        "description": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "description",
+            "finding",
+            "beschreibung",
+            "observation",
+            "feststellung"
+          ]
+        },
+        "classification": {
+          "type": "enum",
+          "aliases": [
+            "classification",
+            "category",
+            "finding type",
+            "klassifizierung",
+            "kategorie"
+          ]
+        },
+        "severity": {
+          "type": "enum",
+          "aliases": [
+            "severity",
+            "major minor",
+            "kritikalitat",
+            "schweregrad",
+            "gravitaet"
+          ]
+        },
+        "due_date": {
+          "type": "date",
+          "aliases": [
+            "due date",
+            "target date",
+            "faelligkeitsdatum",
+            "termin"
+          ]
+        },
+        "status": {
+          "type": "enum",
+          "aliases": [
+            "status",
+            "state"
+          ]
+        },
+        "closed_date": {
+          "type": "date",
+          "aliases": [
+            "closed date",
+            "completion date",
+            "abschlussdatum"
+          ]
+        }
+      },
+      "enum_values": {
+        "classification": {
+          "major": "major",
+          "minor": "minor",
+          "observation": "observation",
+          "feststellung": "observation",
+          "recommendation": "recommendation"
+        },
+        "severity": {
+          "major": "major",
+          "critical": "critical",
+          "minor": "minor"
+        },
+        "status": {
+          "open": "open",
+          "offen": "open",
+          "in progress": "in_progress",
+          "closed": "closed",
+          "done": "closed",
+          "erledigt": "closed"
+        }
+      }
+    },
+    "certificate_register": {
+      "kind": "generic",
+      "table": "certificate_register",
+      "priority": 8,
+      "label": "Certificate register",
+      "description": "Certificates with issue and expiry dates — the evidence for the certification criteria in VA26. Expiry is checked in Python, never by a model.",
+      "natural_key": [
+        "certificate_number"
+      ],
+      "match_fields": [
+        "certificate_number"
+      ],
+      "on_existing": "update",
+      "facts": [
+        {
+          "category": "cert",
+          "field_name": "certification",
+          "value": "{certificate_type} ({certificate_number})",
+          "valid_from": "issued_date",
+          "valid_until": "expiry_date",
+          "confidence": 0.9
+        }
+      ],
+      "fields": {
+        "certificate_number": {
+          "type": "text",
+          "required": true,
+          "aliases": [
+            "certificate number",
+            "certificate no",
+            "cert no",
+            "zertifikatsnummer",
+            "cert number",
+            "number",
+            "certificate",
+            "zertifikat"
+          ]
+        },
+        "certificate_type": {
+          "type": "enum",
+          "aliases": [
+            "certificate type",
+            "type",
+            "certification",
+            "zertifikatsart",
+            "art",
+            "certification type"
+          ]
+        },
+        "issued_date": {
+          "type": "date",
+          "aliases": [
+            "issue date",
+            "issued",
+            "valid from",
+            "ausstellungsdatum",
+            "gueltig ab",
+            "date of issue"
+          ]
+        },
+        "expiry_date": {
+          "type": "date",
+          "aliases": [
+            "expiry date",
+            "expiration date",
+            "valid until",
+            "gueltig bis",
+            "ablaufdatum",
+            "expiry",
+            "date of expiry"
+          ]
+        },
+        "scope": {
+          "type": "text",
+          "aliases": [
+            "scope",
+            "geltungsbereich",
+            "anwendungsbereich",
+            "certificate scope"
+          ]
+        },
+        "issuing_body": {
+          "type": "text",
+          "aliases": [
+            "issuing body",
+            "certification body",
+            "notified body",
+            "ausstellende stelle",
+            "zertifizierungsstelle",
+            "body"
+          ]
+        },
+        "status": {
+          "type": "enum",
+          "aliases": [
+            "status",
+            "state"
+          ]
+        }
+      },
+      "enum_values": {
+        "certificate_type": {
+          "iso 13485": "iso_13485",
+          "iso 9001": "iso_9001",
+          "iso 14971": "iso_14971",
+          "ce": "ce",
+          "mdr": "mdr",
+          "iso 14001": "iso_14001"
+        },
+        "status": {
+          "valid": "valid",
+          "gueltig": "valid",
+          "expired": "expired",
+          "abgelaufen": "expired",
+          "suspended": "suspended",
+          "withdrawn": "withdrawn",
+          "zurueckgezogen": "withdrawn"
+        }
+      }
+    },
+    "tabular_records": {
+      "kind": "raw_records",
+      "table": "tabular_records",
+      "label": "Unclassified tabular records (safe landing zone)",
+      "description": "Catch-all target for files that match no known table. Rows are stored verbatim (payload_json) with full provenance so nothing is ever lost, and can be re-mapped later.",
+      "natural_key": [],
+      "on_existing": "skip",
+      "fields": {}
+    }
+  },
+  "routes": [
+    {
+      "match": {
+        "file_pattern": "*buy*history*"
+      },
+      "target": "purchase_history",
+      "priority": 50
+    },
+    {
+      "match": {
+        "file_pattern": "*purchase*history*"
+      },
+      "target": "purchase_history",
+      "priority": 50
+    },
+    {
+      "match": {
+        "file_pattern": "*einkauf*"
+      },
+      "target": "purchase_history",
+      "priority": 40
+    },
+    {
+      "match": {
+        "file_pattern": "*lieferanten*stamm*"
+      },
+      "target": "supplier_master",
+      "priority": 40
+    },
+    {
+      "match": {
+        "file_pattern": "*supplier*list*"
+      },
+      "target": "supplier_master",
+      "priority": 40
+    },
+    {
+      "match": {
+        "sheet_name": "purchase_history"
+      },
+      "target": "purchase_history",
+      "priority": 30
+    },
+    {
+      "match": {
+        "sheet_name": "Purchase History"
+      },
+      "target": "purchase_history",
+      "priority": 30
+    },
+    {
+      "match": {
+        "sheet_contains": "purchase"
+      },
+      "target": "purchase_history",
+      "priority": 20
+    },
+    {
+      "match": {
+        "sheet_contains": "bestellung"
+      },
+      "target": "purchase_history",
+      "priority": 20
+    },
+    {
+      "match": {
+        "sheet_contains": "supplier"
+      },
+      "target": "supplier_master",
+      "priority": 20
+    }
+  ]
+}
